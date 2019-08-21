@@ -2,6 +2,9 @@
 
 import tkinter
 
+from gui.dialogs.about_dialog import *
+
+
 class Menubar(tkinter.Menu):
     """Menu bar displayed on the main window."""
 
@@ -18,4 +21,18 @@ class Menubar(tkinter.Menu):
                                   command=parent.quit)
 
 
+        self.helpmenu = tkinter.Menu(self, tearoff=0)
+        self.helpmenu.add_command(label="Help",
+                                  image=main_window.icons.help_faq_icon,
+                                  compound="left", underline=0, accelerator="F1",
+                                  command=help)
+        self.helpmenu.add_separator()
+        self.helpmenu.add_command(label="About",
+                                  image=main_window.icons.help_about_icon, accelerator="F11",
+                                  compound="left", underline=0, command=about)
+
         self.add_cascade(label="File", menu=self.filemenu, underline=0)
+        self.add_cascade(label="Help", menu=self.helpmenu, underline=0)
+
+        self.parent.bind('<F1>', lambda event: help())
+        self.parent.bind('<F11>', lambda event: about())
