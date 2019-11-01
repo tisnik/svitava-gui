@@ -2,6 +2,7 @@
 
 import tkinter
 
+from gui.canvas import *
 from gui.menubar import *
 from gui.icons import *
 
@@ -16,6 +17,11 @@ class MainWindow:
 
         self.icons = Icons()
 
+        self.canvas = Canvas(self.root, 800, 600, self)
+
+        self.configure_grid()
+        self.canvas.grid(column=1, row=1, sticky="NWSE")
+
         self.menubar = Menubar(self.root, self)
         self.root.config(menu=self.menubar)
 
@@ -29,3 +35,8 @@ class MainWindow:
                                      "Do you want to quit the program?")
         if answer:
             self.root.quit()
+
+    def configure_grid(self):
+        """Configure grid on canvas."""
+        tkinter.Grid.rowconfigure(self.root, 2, weight=1)
+        tkinter.Grid.columnconfigure(self.root, 2, weight=1)
