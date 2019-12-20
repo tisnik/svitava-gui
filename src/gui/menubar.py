@@ -15,32 +15,38 @@ class Menubar(tkinter.Menu):
         self.parent = parent
         self.main_window = main_window
 
-        self.filemenu = tkinter.Menu(self, tearoff=0)
-        self.filemenu.add_command(label="Quit", image=main_window.icons.exit_icon,
+        self.file_menu = tkinter.Menu(self, tearoff=0)
+        self.file_menu.add_command(label="Quit", image=main_window.icons.exit_icon,
                                   compound="left", underline=0, accelerator="Ctrl+Q",
                                   command=parent.quit)
 
 
-        self.renderermenu = tkinter.Menu(self, tearoff=0)
-        self.renderermenu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
+        self.renderer_menu = tkinter.Menu(self, tearoff=0)
+        self.renderer_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
                                      compound="left", underline=0, accelerator="Ctrl+N")
 
-        self.compositormenu = tkinter.Menu(self, tearoff=0)
+        self.compositor_menu = tkinter.Menu(self, tearoff=0)
 
-        self.helpmenu = tkinter.Menu(self, tearoff=0)
-        self.helpmenu.add_command(label="Help",
+        self.palette_menu = tkinter.Menu(self, tearoff=0)
+        self.palette_menu.add_command(label="Load palette", underline=0)
+        self.palette_menu.add_command(label="Save palette", underline=0)
+        self.palette_menu.add_command(label="Palette editor", underline=0)
+
+        self.help_menu = tkinter.Menu(self, tearoff=0)
+        self.help_menu.add_command(label="Help",
                                   image=main_window.icons.help_faq_icon,
                                   compound="left", underline=0, accelerator="F1",
                                   command=help)
-        self.helpmenu.add_separator()
-        self.helpmenu.add_command(label="About",
+        self.help_menu.add_separator()
+        self.help_menu.add_command(label="About",
                                   image=main_window.icons.help_about_icon, accelerator="F11",
                                   compound="left", underline=0, command=about)
 
-        self.add_cascade(label="File", menu=self.filemenu, underline=0)
-        self.add_cascade(label="Renderer", menu=self.renderermenu, underline=0)
-        self.add_cascade(label="Compositor", menu=self.compositormenu, underline=0)
-        self.add_cascade(label="Help", menu=self.helpmenu, underline=0)
+        self.add_cascade(label="File", menu=self.file_menu, underline=0)
+        self.add_cascade(label="Renderer", menu=self.renderer_menu, underline=0)
+        self.add_cascade(label="Compositor", menu=self.compositor_menu, underline=0)
+        self.add_cascade(label="Palette", menu=self.palette_menu, underline=0)
+        self.add_cascade(label="Help", menu=self.help_menu, underline=0)
 
         self.parent.bind('<F1>', lambda event: help())
         self.parent.bind('<F11>', lambda event: about())
