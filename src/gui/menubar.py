@@ -3,6 +3,8 @@
 import tkinter
 
 from gui.dialogs.about_dialog import *
+from gui.dialogs.help_dialog import *
+from gui.dialogs.fractal_type_dialog import *
 
 
 class Menubar(tkinter.Menu):
@@ -23,7 +25,8 @@ class Menubar(tkinter.Menu):
 
         self.renderer_menu = tkinter.Menu(self, tearoff=0)
         self.renderer_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
-                                     compound="left", underline=0, accelerator="Ctrl+N")
+                                     compound="left", underline=0, accelerator="Ctrl+N",
+                                     command=select_fractal_type_dialog)
 
         self.compositor_menu = tkinter.Menu(self, tearoff=0)
 
