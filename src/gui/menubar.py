@@ -31,9 +31,12 @@ class Menubar(tkinter.Menu):
         self.compositor_menu = tkinter.Menu(self, tearoff=0)
 
         self.palette_menu = tkinter.Menu(self, tearoff=0)
-        self.palette_menu.add_command(label="Load palette", underline=0)
-        self.palette_menu.add_command(label="Save palette", underline=0)
-        self.palette_menu.add_command(label="Palette editor", underline=0)
+        self.palette_menu.add_command(label="Load palette", image=main_window.icons.file_open_icon,
+                                    compound="left", underline=0)
+        self.palette_menu.add_command(label="Save palette", image=main_window.icons.file_save_icon,
+                                    compound="left", underline=0)
+        self.palette_menu.add_command(label="Palette editor", image=main_window.icons.edit_icon,
+                                    compound="left", underline=0)
 
         self.help_menu = tkinter.Menu(self, tearoff=0)
         self.help_menu.add_command(label="Help",
