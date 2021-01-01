@@ -21,6 +21,8 @@ class HelpDialog(tkinter.Toplevel):
         self.title("Nápověda")
         self.transient(parent)
 
+        self.grab_set()
+
         f = tkinter.LabelFrame(self, text="x")
 
         scrollbar = tkinter.Scrollbar(f)

@@ -18,15 +18,20 @@ class Menubar(tkinter.Menu):
         self.main_window = main_window
 
         self.file_menu = tkinter.Menu(self, tearoff=0)
+        self.file_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
+                                     compound="left", underline=0, accelerator="Ctrl+N",
+                                     command=self.command_fractal_type_dialog)
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label="Load fractal", image=main_window.icons.file_open_icon,
+                                    compound="left", underline=0, accelerator="Ctrl+L")
+        self.file_menu.add_command(label="Save fractal", image=main_window.icons.file_save_icon,
+                                    compound="left", underline=0, accelerator="Ctrl+S")
+        self.file_menu.add_separator()
         self.file_menu.add_command(label="Quit", image=main_window.icons.exit_icon,
                                   compound="left", underline=0, accelerator="Ctrl+Q",
                                   command=parent.quit)
 
-
         self.renderer_menu = tkinter.Menu(self, tearoff=0)
-        self.renderer_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
-                                     compound="left", underline=0, accelerator="Ctrl+N",
-                                     command=select_fractal_type_dialog)
 
         self.compositor_menu = tkinter.Menu(self, tearoff=0)
 
@@ -56,3 +61,7 @@ class Menubar(tkinter.Menu):
 
         self.parent.bind('<F1>', lambda event: help())
         self.parent.bind('<F11>', lambda event: about())
+        self.parent.bind('<Control-n>', lambda event: self.command_fractal_type_dialog())
+
+    def command_fractal_type_dialog(self):
+        select_fractal_type_dialog()
