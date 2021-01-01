@@ -1,7 +1,7 @@
 """Implementation of 'Select fractal type' dialog."""
 
 #
-#  (C) Copyright 2019  Pavel Tisnovsky
+#  (C) Copyright 2019, 2020  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
@@ -24,15 +24,7 @@ class FractalTypeDialog(tkinter.Toplevel):
         top_part = tkinter.LabelFrame(self, text="Fractal type", padx=5, pady=5)
         top_part.grid(row=1, column=1, sticky="NWSE")
 
-        self.icon1=tkinter.PhotoImage(file="images/mandelbrot.png")
-        self.icon2=tkinter.PhotoImage(file="images/mandelbrot_bw.png")
-
-        n1=tkinter.Button(top_part)
-        n1.config(text="In complex plane", image=self.icon2, compound=tkinter.TOP)
-        n1.grid(row=0, column=1)
-
-        n1.bind("<Enter>", lambda e:n1.config(image=self.icon1))
-        n1.bind("<Leave>", lambda e:n1.config(image=self.icon2))
+        cplx_button, cplx_icons = self.fractal_button(top_part, "In complex plane", "mandelbrot")
 
         # rest
         cancelButton = tkinter.Button(self, text="Cancel", command=self.cancel)
@@ -43,6 +35,23 @@ class FractalTypeDialog(tkinter.Toplevel):
 
         # how the buttons should behave
         self.bind("<Escape>", lambda event: self.destroy())
+
+        self.grab_set()
+
+    def fractal_button(self, placement, text, icon_name):
+        icons = (
+            tkinter.PhotoImage(file="images/" + icon_name + ".png"),
+            tkinter.PhotoImage(file="images/" + icon_name + "_bw.png")
+        )
+
+        button = tkinter.Button(placement)
+        button.config(text=text, image=icons[1], compound=tkinter.TOP)
+        button.grid(row=0, column=1)
+
+        button.bind("<Enter>", lambda e:button.config(image=icons[0]))
+        button.bind("<Leave>", lambda e:button.config(image=icons[1]))
+
+        return button, icons
 
     def cancel(self):
         self.destroy()
