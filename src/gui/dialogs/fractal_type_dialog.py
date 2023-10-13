@@ -16,6 +16,11 @@ import tkinter
 
 from tkinter import messagebox
 
+from gui.dialogs.complex_fractal_type_dialog import ComplexFractalTypeDialog
+from gui.dialogs.dynamic_fractal_type_dialog import DynamicFractalTypeDialog
+from gui.dialogs.ifs_fractal_type_dialog import IFSFractalTypeDialog
+from gui.dialogs.l_system_fractal_type_dialog import LSystemFractalTypeDialog
+
 
 class FractalTypeDialog(tkinter.Toplevel):
 
@@ -24,7 +29,10 @@ class FractalTypeDialog(tkinter.Toplevel):
         top_part = tkinter.LabelFrame(self, text="Fractal type", padx=5, pady=5)
         top_part.grid(row=1, column=1, sticky="NWSE")
 
-        cplx_button, cplx_icons = self.fractal_button(top_part, "In complex plane", "mandelbrot")
+        cplx_button, cplx_icons = self.fractal_button(top_part, "In complex plane", "mandelbrot", 0, 1, on_cplx_clicked)
+        ifs_button, ifs_icons = self.fractal_button(top_part, "Dynamic system", "dynamic", 0, 2, on_dynamic_clicked)
+        ifs_button, ifs_icons = self.fractal_button(top_part, "IFS", "ifs", 1, 1, on_ifs_clicked)
+        ifs_button, ifs_icons = self.fractal_button(top_part, "L-system system", "lsystem", 1, 2, on_l_system_clicked)
 
         # rest
         cancelButton = tkinter.Button(self, text="Cancel", command=self.cancel)
@@ -38,15 +46,15 @@ class FractalTypeDialog(tkinter.Toplevel):
 
         self.grab_set()
 
-    def fractal_button(self, placement, text, icon_name):
+    def fractal_button(self, placement, text, icon_name, row, column, command):
         icons = (
             tkinter.PhotoImage(file="images/" + icon_name + ".png"),
             tkinter.PhotoImage(file="images/" + icon_name + "_bw.png")
         )
 
-        button = tkinter.Button(placement)
+        button = tkinter.Button(placement, command=command)
         button.config(text=text, image=icons[1], compound=tkinter.TOP)
-        button.grid(row=0, column=1)
+        button.grid(row=row, column=column)
 
         button.bind("<Enter>", lambda e:button.config(image=icons[0]))
         button.bind("<Leave>", lambda e:button.config(image=icons[1]))
@@ -61,5 +69,18 @@ class FractalTypeDialog(tkinter.Toplevel):
         self.wait_window()
         # return self.rooms, self.id.get()
 
+
 def select_fractal_type_dialog():
     FractalTypeDialog(None)
+
+def on_cplx_clicked():
+    ComplexFractalTypeDialog(None)
+
+def on_dynamic_clicked():
+    DynamicFractalTypeDialog(None)
+
+def on_ifs_clicked():
+    IFSFractalTypeDialog(None)
+
+def on_l_system_clicked():
+    LSystemFractalTypeDialog(None)
