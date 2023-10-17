@@ -14,7 +14,6 @@
 
 import tkinter
 
-from tkinter import messagebox
 
 from gui.dialogs.complex_fractal_type_dialog import ComplexFractalTypeDialog
 from gui.dialogs.dynamic_fractal_type_dialog import DynamicFractalTypeDialog
