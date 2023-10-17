@@ -2,9 +2,9 @@
 
 import tkinter
 
-from gui.dialogs.about_dialog import *
-from gui.dialogs.help_dialog import *
-from gui.dialogs.fractal_type_dialog import *
+from gui.dialogs.about_dialog import about
+from gui.dialogs.help_dialog import help
+from gui.dialogs.fractal_type_dialog import select_fractal_type_dialog
 
 
 class Menubar(tkinter.Menu):
