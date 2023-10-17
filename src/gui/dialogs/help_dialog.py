@@ -12,7 +12,6 @@
 
 import tkinter
 
-from tkinter import messagebox
 
 
 class HelpDialog(tkinter.Toplevel):
