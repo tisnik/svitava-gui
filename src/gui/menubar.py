@@ -18,13 +18,9 @@ class Menubar(tkinter.Menu):
         self.main_window = main_window
 
         self.file_menu = tkinter.Menu(self, tearoff=0)
-        self.file_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
-                                     compound="left", underline=0, accelerator="Ctrl+N",
-                                     command=self.command_fractal_type_dialog)
-        self.file_menu.add_separator()
-        self.file_menu.add_command(label="Load fractal", image=main_window.icons.file_open_icon,
+        self.file_menu.add_command(label="Load project", image=main_window.icons.file_open_icon,
                                     compound="left", underline=0, accelerator="Ctrl+L")
-        self.file_menu.add_command(label="Save fractal", image=main_window.icons.file_save_icon,
+        self.file_menu.add_command(label="Save project", image=main_window.icons.file_save_icon,
                                     compound="left", underline=0, accelerator="Ctrl+S")
         self.file_menu.add_separator()
         self.file_menu.add_command(label="Quit", image=main_window.icons.exit_icon,
@@ -32,8 +28,22 @@ class Menubar(tkinter.Menu):
                                   command=parent.quit)
 
         self.renderer_menu = tkinter.Menu(self, tearoff=0)
+        self.renderer_menu.add_command(label="New fractal", image=main_window.icons.fractal_new_icon,
+                                     compound="left", underline=0, accelerator="Ctrl+N",
+                                     command=self.command_fractal_type_dialog)
+        self.renderer_menu.add_separator()
+        self.renderer_menu.add_command(label="New pattern", image=main_window.icons.pattern_new_icon,
+                                     compound="left", underline=0, accelerator="Ctrl+P",
+                                     command=self.command_fractal_type_dialog)
 
         self.compositor_menu = tkinter.Menu(self, tearoff=0)
+        self.compositor_menu.add_command(label="New filter", image=main_window.icons.filter_new_icon,
+                                     compound="left", underline=4, accelerator="Ctrl+F",
+                                     command=None)
+        self.compositor_menu.add_command(label="New color mapper", image=main_window.icons.fill_color_icon,
+                                     compound="left", underline=4, accelerator="Ctrl+C",
+                                     command=None)
+        self.compositor_menu.add_separator()
 
         self.palette_menu = tkinter.Menu(self, tearoff=0)
         self.palette_menu.add_command(label="Load palette", image=main_window.icons.file_open_icon,
@@ -53,7 +63,7 @@ class Menubar(tkinter.Menu):
                                   image=main_window.icons.help_about_icon, accelerator="F11",
                                   compound="left", underline=0, command=about)
 
-        self.add_cascade(label="File", menu=self.file_menu, underline=0)
+        self.add_cascade(label="File", menu=self.file_menu, underline=0, font = ("", 12)) ## TODO
         self.add_cascade(label="Renderer", menu=self.renderer_menu, underline=0)
         self.add_cascade(label="Compositor", menu=self.compositor_menu, underline=0)
         self.add_cascade(label="Palette", menu=self.palette_menu, underline=0)
