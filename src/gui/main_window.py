@@ -5,6 +5,8 @@ import tkinter
 from gui.canvas import *
 from gui.menubar import *
 from gui.icons import *
+from gui.status_bar import *
+from gui.toolbar import *
 
 
 class MainWindow:
@@ -17,10 +19,14 @@ class MainWindow:
 
         self.icons = Icons()
 
+        self.toolbar = Toolbar(self.root, self)
+        self.statusbar = StatusBar(self.root)
         self.canvas = Canvas(self.root, 800, 600, self)
 
         self.configure_grid()
-        self.canvas.grid(column=1, row=1, sticky="NWSE")
+        self.toolbar.grid(column=1, row=1, columnspan=2, sticky="WE")
+        self.canvas.grid(column=1, row=2, sticky="NWSE")
+        self.statusbar.grid(column=1, row=3, columnspan=2, sticky="WE")
 
         self.menubar = Menubar(self.root, self)
         self.root.config(menu=self.menubar)
