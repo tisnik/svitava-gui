@@ -38,6 +38,46 @@ class Configuration:
         """
         return self.config.getint("ui", "window_height")
 
+    @property
+    def main_menu_font_size(self) -> int:
+        """
+        Retrieve size of main menu font.
+        
+        Returns:
+            int: Size of fonts used to display main menu
+        """
+        return self.config.getint("ui", "main_menu_font_size")
+
+    @property
+    def menu_font_size(self) -> int:
+        """
+        Retrieve size of menu font.
+        
+        Returns:
+            int: Size of fonts used to display menu itels
+        """
+        return self.config.getint("ui", "menu_font_size")
+
+    @property
+    def gui_font_size(self) -> int:
+        """
+        Retrieve size of GUI font.
+        
+        Returns:
+            int: Size of fonts used to display GUI
+        """
+        return self.config.getint("ui", "gui_font_size")
+
+    @property
+    def icon_sizes(self) -> int:
+        """
+        Retrieve size of icons.
+        
+        Returns:
+            int: Size of icons, 22 means 22x22 pixels etc.
+        """
+        return self.config.getint("ui", "icon_size")
+
     def write(self) -> None:
         """
         Write the current in-memory configuration to a file named "config2.ini".
