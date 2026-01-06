@@ -1,7 +1,7 @@
 """Main classes for the Svitava GUI application."""
 
 #
-#  (C) Copyright 2019  Pavel Tisnovsky
+#  (C) Copyright 2019, 2025, 2026  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
