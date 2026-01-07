@@ -3,5 +3,5 @@ from configuration import Configuration
 
 configuration = Configuration()
 
-mainWindow = MainWindow()
+mainWindow = MainWindow(configuration)
 mainWindow.show()

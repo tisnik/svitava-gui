@@ -19,13 +19,19 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
         cancelButton = tkinter.Button(self, text="Cancel", command=self.cancel)
         cancelButton.grid(row=2, column=1, sticky="NWSE")
 
-        # close the dialog on 'x' click
-        self.protocol("WM_DELETE_WINDOW", self.destroy)
-
         # how the buttons should behave
         self.bind("<Escape>", lambda event: self.destroy())
 
+        # don't display the dialog in list of opened windows
+        self.transient(parent)
+
+        # close the dialog on 'x' click
+        self.protocol("WM_DELETE_WINDOW", self.destroy)
+
+        # get the focus
         self.grab_set()
+        self.parent = parent
+        cancelButton.focus_set()
 
     def cancel(self):
         """
