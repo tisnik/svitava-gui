@@ -23,7 +23,7 @@ from gui.dialogs.l_system_fractal_type_dialog import LSystemFractalTypeDialog
 
 class FractalTypeDialog(tkinter.Toplevel):
 
-    def __init__(self, parent):
+    def __init__(self, parent: tkinter.Tk) -> None:
         """
         Initialize the fractal type selection dialog as a modal top-level window.
         
@@ -36,22 +36,28 @@ class FractalTypeDialog(tkinter.Toplevel):
         top_part = tkinter.LabelFrame(self, text="Fractal type", padx=5, pady=5)
         top_part.grid(row=1, column=1, sticky="NWSE")
 
-        _cplx_button, _cplx_icons = self.fractal_button(top_part, "In complex plane", "mandelbrot", 0, 1, on_cplx_clicked)
-        _dynamic_button, _dynamic_icons = self.fractal_button(top_part, "Dynamic system", "dynamic", 0, 2, on_dynamic_clicked)
-        _ifs_button, _ifs_icons = self.fractal_button(top_part, "IFS", "ifs", 1, 1, on_ifs_clicked)
-        _lsystem_button, _lsystem_icons = self.fractal_button(top_part, "L-system system", "lsystem", 1, 2, on_l_system_clicked)
+        _cplx_button, _cplx_icons = self.fractal_button(top_part, "In complex plane", "mandelbrot", 0, 1, self.on_cplx_clicked)
+        _dynamic_button, _dynamic_icons = self.fractal_button(top_part, "Dynamic system", "dynamic", 0, 2, self.on_dynamic_clicked)
+        _ifs_button, _ifs_icons = self.fractal_button(top_part, "IFS", "ifs", 1, 1, self.on_ifs_clicked)
+        _lsystem_button, _lsystem_icons = self.fractal_button(top_part, "L-system system", "lsystem", 1, 2, self.on_l_system_clicked)
 
         # rest
         cancelButton = tkinter.Button(self, text="Cancel", command=self.cancel)
         cancelButton.grid(row=2, column=1, sticky="NWSE")
 
-        # close the dialog on 'x' click
-        self.protocol("WM_DELETE_WINDOW", self.destroy)
-
         # how the buttons should behave
         self.bind("<Escape>", lambda event: self.destroy())
 
+        # don't display the dialog in list of opened windows
+        self.transient(parent)
+
+        # close the dialog on 'x' click
+        self.protocol("WM_DELETE_WINDOW", self.destroy)
+
+        # get the focus
         self.grab_set()
+        self.parent = parent
+        _cplx_button.focus_set()
 
     def fractal_button(self, placement, text, icon_name, row, column, command):
         """
@@ -100,40 +106,42 @@ class FractalTypeDialog(tkinter.Toplevel):
         # return self.rooms, self.id.get()
 
 
-def select_fractal_type_dialog():
+    def on_cplx_clicked(self):
+        """
+        Open the dialog for selecting or configuring a complex-plane fractal type.
+        """
+        ComplexFractalTypeDialog(self)
+
+    def on_dynamic_clicked(self):
+        """
+        Open the "Dynamic system" fractal type dialog.
+        
+        Instantiates a DynamicFractalTypeDialog with no parent.
+        """
+        DynamicFractalTypeDialog(self)
+
+    def on_ifs_clicked(self):
+        """
+        Open the IFS fractal type selection dialog.
+        
+        Creates an IFSFractalTypeDialog with no parent window, triggering the dialog UI for configuring an IFS fractal.
+        """
+        IFSFractalTypeDialog(self)
+
+    def on_l_system_clicked(self):
+        """
+        Open the L-system fractal type dialog.
+        
+        Instantiates the LSystemFractalTypeDialog with no parent window.
+        """
+        LSystemFractalTypeDialog(self)
+
+
+def select_fractal_type_dialog(parent):
     """
     Open the "Select fractal type" dialog.
     
     Creates a FractalTypeDialog with no parent, opening the modal dialog that lets the user choose a fractal type.
     """
-    FractalTypeDialog(None)
+    FractalTypeDialog(parent)
 
-def on_cplx_clicked():
-    """
-    Open the dialog for selecting or configuring a complex-plane fractal type.
-    """
-    ComplexFractalTypeDialog(None)
-
-def on_dynamic_clicked():
-    """
-    Open the "Dynamic system" fractal type dialog.
-    
-    Instantiates a DynamicFractalTypeDialog with no parent.
-    """
-    DynamicFractalTypeDialog(None)
-
-def on_ifs_clicked():
-    """
-    Open the IFS fractal type selection dialog.
-    
-    Creates an IFSFractalTypeDialog with no parent window, triggering the dialog UI for configuring an IFS fractal.
-    """
-    IFSFractalTypeDialog(None)
-
-def on_l_system_clicked():
-    """
-    Open the L-system fractal type dialog.
-    
-    Instantiates the LSystemFractalTypeDialog with no parent window.
-    """
-    LSystemFractalTypeDialog(None)
