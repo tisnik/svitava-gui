@@ -13,11 +13,13 @@ from gui.icons import Icons
 from gui.status_bar import StatusBar
 from gui.toolbar import Toolbar
 
+from configuration import Configuration
+
 
 class MainWindow:
     """Main window shown on screen."""
 
-    def __init__(self):
+    def __init__(self, configuration: Configuration):
         """
         Create and configure the main application window and its primary UI components.
         
@@ -31,7 +33,7 @@ class MainWindow:
 
         self.icons = Icons()
 
-        self.toolbar = Toolbar(self.root, self)
+        self.toolbar = Toolbar(self.root, self, self.icons, configuration)
         self.statusbar = StatusBar(self.root)
         self.canvas = Canvas(self.root, 800, 600, self)
 
@@ -40,7 +42,7 @@ class MainWindow:
         self.canvas.grid(column=1, row=2, sticky="NWSE")
         self.statusbar.grid(column=1, row=3, columnspan=2, sticky="WE")
 
-        self.menubar = Menubar(self.root, self)
+        self.menubar = Menubar(self.root, self, self.icons, configuration)
         self.root.config(menu=self.menubar)
 
     def show(self):
