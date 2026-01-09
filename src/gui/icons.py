@@ -14,6 +14,7 @@ import icons.fill_color
 import icons.edit
 import icons.draw_arrow_forward
 import icons.pattern
+import icons.configure
 
 
 class Icons:
@@ -37,3 +38,4 @@ class Icons:
         self.file_save_as_icon = tkinter.PhotoImage(data=icons.file_save_as.icon)
 
         self.edit_icon = tkinter.PhotoImage(data=icons.edit.icon)
+        self.configure_icon = tkinter.PhotoImage(data=icons.configure.icon)
