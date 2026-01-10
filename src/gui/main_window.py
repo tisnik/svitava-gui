@@ -35,7 +35,7 @@ class MainWindow:
 
         self.toolbar = Toolbar(self.root, self, self.icons, configuration)
         self.statusbar = StatusBar(self.root)
-        self.canvas = Canvas(self.root, 800, 600, self)
+        self.canvas = Canvas(self.root, configuration.window_width, configuration.window_height, self)
 
         self.configure_grid()
         self.toolbar.grid(column=1, row=1, columnspan=2, sticky="WE")
