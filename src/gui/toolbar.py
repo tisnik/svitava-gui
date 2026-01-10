@@ -3,6 +3,9 @@
 import tkinter
 
 from gui.tooltip import Tooltip
+from gui.dialogs.fractal_type_dialog import select_fractal_type_dialog
+from gui.dialogs.pattern_type_dialog import select_pattern_type_dialog
+from gui.dialogs.settings_dialog import settings_dialog
 
 from configuration import Configuration
 
@@ -23,6 +26,7 @@ class Toolbar(tkinter.LabelFrame):
         super().__init__(parent, text="Tools", padx=5, pady=5, font=("", configuration.gui_font_size))
 
         self.parent = parent
+        self.icons = icons
         self.main_window = main_window
 
         self.button_project_load = tkinter.Button(
@@ -45,7 +49,7 @@ class Toolbar(tkinter.LabelFrame):
             self,
             text="New fractal",
             image=icons.fractal_new_icon,
-            command=None,
+            command=self.command_fractal_type_dialog,
         )
         Tooltip(self.button_new_fractal, "New fractal")
 
@@ -53,7 +57,7 @@ class Toolbar(tkinter.LabelFrame):
             self,
             text="New pattern",
             image=icons.pattern_new_icon,
-            command=None,
+            command=self.command_pattern_type_dialog,
         )
         Tooltip(self.button_new_pattern, "New pattern")
 
@@ -81,11 +85,19 @@ class Toolbar(tkinter.LabelFrame):
         )
         Tooltip(self.button_new_connection, "New connection")
 
+        self.button_settings = tkinter.Button(
+            self,
+            text="Settings",
+            image=icons.configure_icon,
+            command=self.settings_dialog
+        )
+        Tooltip(self.button_settings, "Settings")
+
         self.button_quit = tkinter.Button(
             self,
             text="Quit",
             image=icons.exit_icon,
-            command=None,
+            command=parent.quit,
         )
         Tooltip(self.button_quit, "Quit")
 
@@ -93,6 +105,7 @@ class Toolbar(tkinter.LabelFrame):
         spacer2 = tkinter.Label(self, text="   ")
         spacer3 = tkinter.Label(self, text="   ")
         spacer4 = tkinter.Label(self, text="   ")
+        spacer5 = tkinter.Label(self, text="   ")
 
         self.button_project_load.grid(column=1, row=1)
         self.button_project_save.grid(column=2, row=1)
@@ -105,7 +118,9 @@ class Toolbar(tkinter.LabelFrame):
         spacer3.grid(column=9, row=1)
         self.button_new_connection.grid(column=10, row=1)
         spacer4.grid(column=11, row=1)
-        self.button_quit.grid(column=12, row=1)
+        self.button_settings.grid(column=12, row=1)
+        spacer5.grid(column=13, row=1)
+        self.button_quit.grid(column=14, row=1)
 
 
     @staticmethod
@@ -127,3 +142,27 @@ class Toolbar(tkinter.LabelFrame):
             button (tkinter.Button): The button widget to enable; its state will be set to "normal".
         """
         button["state"] = "normal"
+
+    def command_fractal_type_dialog(self):
+        """
+        Open the fractal-type selection dialog.
+        
+        Displays the dialog that lets the user choose a fractal type to create.
+        """
+        select_fractal_type_dialog(self.parent, self.icons)
+
+    def command_pattern_type_dialog(self):
+        """
+        Open the pattern selection dialog.
+        
+        Displays the dialog that lets the user choose a pattern type to create.
+        """
+        select_pattern_type_dialog(self.parent)
+
+    def settings_dialog(self):
+        """
+        Open the settings dialog.
+        
+        Displays the dialog with configuration/settings.
+        """
+        settings_dialog(self.parent)
