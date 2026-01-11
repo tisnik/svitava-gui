@@ -1,1 +1,1 @@
-python3 -B src/svitava-gui.py
+python -B src/svitava-gui.py
