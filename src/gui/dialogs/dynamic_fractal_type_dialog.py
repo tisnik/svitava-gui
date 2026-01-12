@@ -1,11 +1,12 @@
 import tkinter
 
+
 class DynamicFractalTypeDialog(tkinter.Toplevel):
 
     def __init__(self, parent):
         """
         Initialize the DynamicFractalTypeDialog as a Toplevel window attached to the given parent.
-        
+
         Parameters:
             parent: The parent Tk or widget to which this dialog window will be attached.
         """
@@ -34,7 +35,7 @@ class DynamicFractalTypeDialog(tkinter.Toplevel):
     def cancel(self):
         """
         Close the dialog window.
-        
+
         Destroys the Toplevel window, closing the dialog and releasing its associated resources.
         """
         self.destroy()
@@ -42,7 +43,7 @@ class DynamicFractalTypeDialog(tkinter.Toplevel):
     def show(self):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
-        
+
         This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
