@@ -1,16 +1,19 @@
 import tkinter
 
+
 class ColorMapperDialog(tkinter.Toplevel):
 
     def __init__(self, parent):
         """
         Create a modal top-level dialog for selecting color mapper.
-        
+
         Parameters:
             parent (tkinter.Widget): Parent widget or window that owns this dialog.
         """
         tkinter.Toplevel.__init__(self, parent)
-        top_part = tkinter.LabelFrame(self, text="Fractal in complex plane", padx=5, pady=5)
+        top_part = tkinter.LabelFrame(
+            self, text="Fractal in complex plane", padx=5, pady=5
+        )
         top_part.grid(row=1, column=1, sticky="NWSE")
 
         # rest
@@ -33,7 +36,7 @@ class ColorMapperDialog(tkinter.Toplevel):
     def cancel(self):
         """
         Close the dialog window.
-        
+
         Destroys the Toplevel window, closing the dialog and releasing its associated resources.
         """
         self.destroy()
@@ -41,15 +44,15 @@ class ColorMapperDialog(tkinter.Toplevel):
     def show(self):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
-        
+
         This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
         self.wait_window()
+
 
 def select_color_mapper_dialog(parent):
     """
     Open the "Color mapper" dialog.
     """
     ColorMapperDialog(parent)
-
