@@ -1,25 +1,38 @@
 import tkinter
 
+
 class ComplexFractalTypeDialog(tkinter.Toplevel):
 
     def __init__(self, parent):
         """
         Create a modal top-level dialog for selecting a fractal in the complex plane.
-        
+
         Initializes the Toplevel window as a child of `parent`, builds the dialog's labeled frame and a Cancel button, binds the window close button and Escape key to close the dialog, and grabs focus to make the dialog modal.
-        
+
         Parameters:
             parent (tkinter.Widget): Parent widget or window that owns this dialog.
         """
         tkinter.Toplevel.__init__(self, parent)
-        top_part = tkinter.LabelFrame(self, text="Fractal in complex plane", padx=5, pady=5)
+        top_part = tkinter.LabelFrame(
+            self, text="Fractal in complex plane", padx=5, pady=5
+        )
         top_part.grid(row=1, column=1, sticky="NWSE")
 
-        _mandelbrot_button, mandelbrot_icons = self.fractal_button(top_part, "Mandelbrot", "mandelbrot", 0, 1, self.on_mandelbrot_clicked)
-        _barnsley_button, barnsley_icons = self.fractal_button(top_part, "Barnsley", "barnsley1", 0, 2, self.on_barnsley_clicked)
-        _magnet1_button, magnet1_icons = self.fractal_button(top_part, "Magnet1", "magnet1", 1, 1, self.on_magnet1_clicked)
-        _magnet2_button, magnet2_icons = self.fractal_button(top_part, "Magnet2", "magnet2", 1, 2, self.on_magnet2_clicked)
-        _newton_button, newton_icons = self.fractal_button(top_part, "Newton", "newton", 2, 1, self.on_newton_clicked)
+        _mandelbrot_button, mandelbrot_icons = self.fractal_button(
+            top_part, "Mandelbrot", "mandelbrot", 0, 1, self.on_mandelbrot_clicked
+        )
+        _barnsley_button, barnsley_icons = self.fractal_button(
+            top_part, "Barnsley", "barnsley1", 0, 2, self.on_barnsley_clicked
+        )
+        _magnet1_button, magnet1_icons = self.fractal_button(
+            top_part, "Magnet1", "magnet1", 1, 1, self.on_magnet1_clicked
+        )
+        _magnet2_button, magnet2_icons = self.fractal_button(
+            top_part, "Magnet2", "magnet2", 1, 2, self.on_magnet2_clicked
+        )
+        _newton_button, newton_icons = self.fractal_button(
+            top_part, "Newton", "newton", 2, 1, self.on_newton_clicked
+        )
 
         # rest
         cancelButton = tkinter.Button(self, text="Cancel", command=self.cancel)
@@ -42,7 +55,7 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
     def fractal_button(self, placement, text, icon_name, row, column, command):
         """
         Create and place a framed button for selecting a fractal type with hoverable icons.
-        
+
         Parameters:
             placement: The parent tkinter widget or container where the button will be placed.
             text (str): Label displayed below the icon on the button.
@@ -50,29 +63,29 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
             row (int): Grid row index where the button will be placed.
             column (int): Grid column index where the button will be placed.
             command (callable): Callback invoked when the button is clicked.
-        
+
         Returns:
             tuple: (button, icons) where `button` is the created tkinter.Button and `icons` is a two-tuple
             (color_photoimage, bw_photoimage) of tkinter.PhotoImage objects used for hover and default states.
         """
         icons = (
             tkinter.PhotoImage(file="images/cplx/" + icon_name + ".png"),
-            tkinter.PhotoImage(file="images/cplx/" + icon_name + "_bw.png")
+            tkinter.PhotoImage(file="images/cplx/" + icon_name + "_bw.png"),
         )
 
         button = tkinter.Button(placement, command=command)
         button.config(text=text, image=icons[1], compound=tkinter.TOP)
         button.grid(row=row, column=column)
 
-        button.bind("<Enter>", lambda e:button.config(image=icons[0]))
-        button.bind("<Leave>", lambda e:button.config(image=icons[1]))
+        button.bind("<Enter>", lambda e: button.config(image=icons[0]))
+        button.bind("<Leave>", lambda e: button.config(image=icons[1]))
 
         return button, icons
 
     def cancel(self):
         """
         Close the dialog window.
-        
+
         Destroys the Toplevel window, closing the dialog and releasing its associated resources.
         """
         self.destroy()
@@ -80,7 +93,7 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
     def show(self):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
-        
+
         This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
