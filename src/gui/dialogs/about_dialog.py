@@ -18,5 +18,6 @@ from tkinter import messagebox
 
 def about():
     """Show 'about' dialog."""
-    messagebox.showinfo("About Svitava GUI",
-                        "GUI interface for the Svitava fractal renderer")
+    messagebox.showinfo(
+        "About Svitava GUI", "GUI interface for the Svitava fractal renderer"
+    )
