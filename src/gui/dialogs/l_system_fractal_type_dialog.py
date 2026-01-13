@@ -1,11 +1,12 @@
 import tkinter
 
+
 class LSystemFractalTypeDialog(tkinter.Toplevel):
 
     def __init__(self, parent):
         """
         Initialize the LSystemFractalTypeDialog attached to the given parent window.
-        
+
         Parameters:
             parent (tkinter.Widget): The parent or master window that will own this dialog.
         """
@@ -34,7 +35,7 @@ class LSystemFractalTypeDialog(tkinter.Toplevel):
     def cancel(self):
         """
         Close the dialog window.
-        
+
         Destroys the Toplevel window, closing the dialog and releasing its associated resources.
         """
         self.destroy()
@@ -42,7 +43,7 @@ class LSystemFractalTypeDialog(tkinter.Toplevel):
     def show(self):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
-        
+
         This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
