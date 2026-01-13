@@ -15,9 +15,7 @@ class SettingsDialog(tkinter.Toplevel):
         self.transient(parent)
 
         self.group1 = tkinter.LabelFrame(self, text="Renderer", padx=5, pady=8)
-        self.group2 = tkinter.LabelFrame(
-            self, text="User interface", padx=5, pady=8
-        )
+        self.group2 = tkinter.LabelFrame(self, text="User interface", padx=5, pady=8)
         self.group3 = tkinter.LabelFrame(self, text="Directories", padx=5, pady=8)
 
         # frame group #1
@@ -64,4 +62,3 @@ def settings_dialog(parent):
     Open the "Settings" dialog.
     """
     SettingsDialog(parent)
-
