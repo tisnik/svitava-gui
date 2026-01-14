@@ -31,7 +31,9 @@ class Icons:
         self.fill_color_icon = tkinter.PhotoImage(data=icons.fill_color.icon)
         self.pattern_new_icon = tkinter.PhotoImage(data=icons.pattern.icon)
 
-        self.draw_arrow_forward_icon = tkinter.PhotoImage(data=icons.draw_arrow_forward.icon)
+        self.draw_arrow_forward_icon = tkinter.PhotoImage(
+            data=icons.draw_arrow_forward.icon
+        )
 
         self.file_open_icon = tkinter.PhotoImage(data=icons.file_open.icon)
         self.file_save_icon = tkinter.PhotoImage(data=icons.file_save.icon)
