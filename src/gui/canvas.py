@@ -11,15 +11,14 @@ class Canvas(tkinter.Canvas):
         Initialize canvas.
 
         Create a Canvas configured for fractal display within the given Tkinter parent.
-        
+
         Parameters:
-        	parent: The Tkinter parent widget that will contain this canvas.
-        	width (int): Width of the canvas in pixels.
-        	height (int): Height of the canvas in pixels.
-        	main_window: Reference to the main application window or controller using this canvas.
+                parent: The Tkinter parent widget that will contain this canvas.
+                width (int): Width of the canvas in pixels.
+                height (int): Height of the canvas in pixels.
+                main_window: Reference to the main application window or controller using this canvas.
         """
-        super().__init__(parent, width=width, height=height,
-                         background="white")
+        super().__init__(parent, width=width, height=height, background="white")
         # self.draw_grid(width, height, Canvas.GRID_SIZE)
         # self.draw_boundary(width, height)
         self.width = width
