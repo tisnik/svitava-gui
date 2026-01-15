@@ -21,7 +21,7 @@ class StatusBar(tkinter.Frame):
     def __init__(self, master: tkinter.Tk) -> None:
         """
         Create a StatusBar frame containing a sunken label for displaying status text.
-        
+
         Parameters:
             master (tkinter.Tk): Parent window or container for the status bar.
         """
@@ -32,11 +32,11 @@ class StatusBar(tkinter.Frame):
     def set(self, format, *args) -> None:
         """
         Update the status bar text using a printf-style format string.
-        
+
         Parameters:
             format (str): A printf-style format string (uses `%` formatting).
             *args: Values to interpolate into `format`.
-        
+
         Description:
             Formats the message with `format % args`, sets it on the status label, and refreshes the UI so the new text is displayed immediately.
         """

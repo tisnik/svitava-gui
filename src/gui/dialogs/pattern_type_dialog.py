@@ -21,7 +21,7 @@ class PatternTypeDialog(tkinter.Toplevel):
     def __init__(self, parent: tkinter.Tk) -> None:
         """
         Initialize the pattern type selection dialog as a modal top-level window.
-        
+
         Parameters:
             parent: The parent widget for this dialog (typically a tkinter root or window).
         """
@@ -50,7 +50,7 @@ class PatternTypeDialog(tkinter.Toplevel):
         # get the focus
         self.grab_set()
         self.parent = parent
-        #_cplx_button.focus_set()
+        # _cplx_button.focus_set()
 
     def cancel(self):
         """
@@ -61,13 +61,12 @@ class PatternTypeDialog(tkinter.Toplevel):
     def show(self):
         """
         Show the dialog and block execution until the window is closed.
-        
+
         This deiconifies the toplevel window and waits for it to be destroyed, returning control after the dialog is closed.
         """
         self.wm_deiconify()
         self.wait_window()
         # return self.rooms, self.id.get()
-
 
     def on_cplx_clicked(self):
         """
@@ -78,7 +77,7 @@ class PatternTypeDialog(tkinter.Toplevel):
     def on_dynamic_clicked(self):
         """
         Open the "Dynamic system" fractal type dialog.
-        
+
         Instantiates a DynamicFractalTypeDialog with no parent.
         """
         DynamicFractalTypeDialog(self)
@@ -86,7 +85,7 @@ class PatternTypeDialog(tkinter.Toplevel):
     def on_ifs_clicked(self):
         """
         Open the IFS fractal type selection dialog.
-        
+
         Creates an IFSFractalTypeDialog with no parent window, triggering the dialog UI for configuring an IFS fractal.
         """
         IFSFractalTypeDialog(self)
@@ -94,7 +93,7 @@ class PatternTypeDialog(tkinter.Toplevel):
     def on_l_system_clicked(self):
         """
         Open the L-system fractal type dialog.
-        
+
         Instantiates the LSystemFractalTypeDialog with no parent window.
         """
         LSystemFractalTypeDialog(self)
@@ -103,8 +102,7 @@ class PatternTypeDialog(tkinter.Toplevel):
 def select_pattern_type_dialog(parent):
     """
     Open the "Select pattern type" dialog.
-    
+
     Creates a PatternTypeDialog with no parent, opening the modal dialog that lets the user choose a pattern type.
     """
     PatternTypeDialog(parent)
-
