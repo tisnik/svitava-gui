@@ -11,7 +11,7 @@ class Configuration:
     def __init__(self, path: str = ".") -> None:
         """
         Initialize the Configuration instance and load the configuration file.
-        
+
         Parameters:
             path (str): Directory where Configuration.CONFIG_FILE_NAME is located; defaults to the current directory. The parsed configuration is stored in the instance attribute `config`.
         """
@@ -22,7 +22,7 @@ class Configuration:
     def window_width(self) -> int:
         """
         Provide window width from the "ui" section of the loaded configuration.
-        
+
         Returns:
             int: The window width value from the configuration.
         """
@@ -32,7 +32,7 @@ class Configuration:
     def window_height(self) -> int:
         """
         Get the configured UI window height.
-        
+
         Returns:
             int: Window height read from the "ui" section's "window_height" option.
         """
@@ -42,7 +42,7 @@ class Configuration:
     def main_menu_font_size(self) -> int:
         """
         Retrieve size of main menu font.
-        
+
         Returns:
             int: Size of fonts used to display main menu
         """
@@ -52,7 +52,7 @@ class Configuration:
     def menu_font_size(self) -> int:
         """
         Retrieve size of menu font.
-        
+
         Returns:
             int: Size of fonts used to display menu itels
         """
@@ -62,7 +62,7 @@ class Configuration:
     def gui_font_size(self) -> int:
         """
         Retrieve size of GUI font.
-        
+
         Returns:
             int: Size of fonts used to display GUI
         """
@@ -72,7 +72,7 @@ class Configuration:
     def icon_sizes(self) -> int:
         """
         Retrieve size of icons.
-        
+
         Returns:
             int: Size of icons, 22 means 22x22 pixels etc.
         """
@@ -81,7 +81,7 @@ class Configuration:
     def write(self) -> None:
         """
         Write the current in-memory configuration to a file named "config2.ini".
-        
+
         Overwrites any existing file with that name.
         """
         with open("config2.ini", "w") as fout:
@@ -90,11 +90,11 @@ class Configuration:
     def check_configuration_option(self, section, option) -> None:
         """
         Verify that an option exists in the given configuration section.
-        
+
         Parameters:
             section (str): Name of the configuration section to check.
             option (str): Name of the option within the section.
-        
+
         Raises:
             Exception: If the option is missing; the exception message indicates the missing option and section in 'config.ini' (Czech).
         """
@@ -105,7 +105,7 @@ class Configuration:
     def check_configuration(self) -> None:
         """
         Validate that the loaded configuration contains the required UI size options.
-        
+
         Raises:
             Exception: if the 'window_width' or 'window_height' option is missing in the 'ui' section.
         """
