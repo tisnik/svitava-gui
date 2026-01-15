@@ -1,6 +1,7 @@
 import os.path
 import subprocess
 
+
 def cached_image(path: str):
     if not os.path.isfile(path):
         print("Rendering started")
