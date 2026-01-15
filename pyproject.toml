@@ -1,3 +1,21 @@
+[project]
+name = "Svitava-GUI"
+dynamic = ["version"]
+authors = []
+maintainers = [
+    {email = "tisnik@centrum.cz", name = "Pavel Tišnovský"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+
+
+
+[tool.pdm.version]
+source = "file"
+path = "src/version.py"
+
+
+
 [tool.ruff]
 #select = ["E", "F", "W", "C", "D"]
 select = ["E", "F", "W", "C"]
