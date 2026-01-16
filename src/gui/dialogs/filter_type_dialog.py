@@ -3,7 +3,7 @@ import tkinter
 
 class FilterTypeDialog(tkinter.Toplevel):
 
-    def __init__(self, parent):
+    def __init__(self, parent: tkinter.Tk) -> None:
         """
         Create a modal top-level dialog for selecting filter type.
 
@@ -33,7 +33,7 @@ class FilterTypeDialog(tkinter.Toplevel):
         self.grab_set()
         self.parent = parent
 
-    def cancel(self):
+    def cancel(self) -> None:
         """
         Close the dialog window.
 
@@ -41,17 +41,19 @@ class FilterTypeDialog(tkinter.Toplevel):
         """
         self.destroy()
 
-    def show(self):
+    def show(self) -> None:
         """
         Display the dialog (restore if minimized) and block until the window is closed.
 
-        This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
+        This brings the dialog to the foreground if it was minimized and then
+        waits for the dialog window to be destroyed, preventing code execution
+        from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
         self.wait_window()
 
 
-def select_filter_type_dialog(parent):
+def select_filter_type_dialog(parent: tkinter.Tk) -> None:
     """
     Open the "Select filter type" dialog.
     """
