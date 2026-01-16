@@ -1,13 +1,18 @@
 import tkinter
 
+from typing import Callable
+
 
 class ComplexFractalTypeDialog(tkinter.Toplevel):
 
-    def __init__(self, parent):
+    def __init__(self, parent: tkinter.Tk) -> None:
         """
         Create a modal top-level dialog for selecting a fractal in the complex plane.
 
-        Initializes the Toplevel window as a child of `parent`, builds the dialog's labeled frame and a Cancel button, binds the window close button and Escape key to close the dialog, and grabs focus to make the dialog modal.
+        Initializes the Toplevel window as a child of `parent`, builds the
+        dialog's labeled frame and a Cancel button, binds the window close
+        button and Escape key to close the dialog, and grabs focus to make the
+        dialog modal.
 
         Parameters:
             parent (tkinter.Widget): Parent widget or window that owns this dialog.
@@ -52,7 +57,15 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
         self.parent = parent
         _mandelbrot_button.focus_set()
 
-    def fractal_button(self, placement, text, icon_name, row, column, command):
+    def fractal_button(
+        self,
+        placement: tkinter.Widget,
+        text: str,
+        icon_name: str,
+        row: int,
+        column: int,
+        command: Callable,
+    ) -> tuple[tkinter.Widget, tuple[tkinter.PhotoImage, tkinter.PhotoImage]]:
         """
         Create and place a framed button for selecting a fractal type with hoverable icons.
 
@@ -82,7 +95,7 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
 
         return button, icons
 
-    def cancel(self):
+    def cancel(self) -> None:
         """
         Close the dialog window.
 
@@ -90,26 +103,28 @@ class ComplexFractalTypeDialog(tkinter.Toplevel):
         """
         self.destroy()
 
-    def show(self):
+    def show(self) -> None:
         """
         Display the dialog (restore if minimized) and block until the window is closed.
 
-        This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
+        This brings the dialog to the foreground if it was minimized and then
+        waits for the dialog window to be destroyed, preventing code execution
+        from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
         self.wait_window()
 
-    def on_mandelbrot_clicked(self):
+    def on_mandelbrot_clicked(self) -> None:
         pass
 
-    def on_barnsley_clicked(self):
+    def on_barnsley_clicked(self) -> None:
         pass
 
-    def on_magnet1_clicked(self):
+    def on_magnet1_clicked(self) -> None:
         pass
 
-    def on_magnet2_clicked(self):
+    def on_magnet2_clicked(self) -> None:
         pass
 
-    def on_newton_clicked(self):
+    def on_newton_clicked(self) -> None:
         pass
