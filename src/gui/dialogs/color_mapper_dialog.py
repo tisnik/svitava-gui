@@ -3,7 +3,7 @@ import tkinter
 
 class ColorMapperDialog(tkinter.Toplevel):
 
-    def __init__(self, parent):
+    def __init__(self, parent: tkinter.Tk) -> None:
         """
         Create a modal top-level dialog for selecting color mapper.
 
@@ -33,7 +33,7 @@ class ColorMapperDialog(tkinter.Toplevel):
         self.grab_set()
         self.parent = parent
 
-    def cancel(self):
+    def cancel(self) -> None:
         """
         Close the dialog window.
 
@@ -41,7 +41,7 @@ class ColorMapperDialog(tkinter.Toplevel):
         """
         self.destroy()
 
-    def show(self):
+    def show(self) -> None:
         """
         Display the dialog (restore if minimized) and block until the window is closed.
 
@@ -51,7 +51,7 @@ class ColorMapperDialog(tkinter.Toplevel):
         self.wait_window()
 
 
-def select_color_mapper_dialog(parent):
+def select_color_mapper_dialog(parent: tkinter.Tk) ->None:
     """
     Open the "Color mapper" dialog.
     """
