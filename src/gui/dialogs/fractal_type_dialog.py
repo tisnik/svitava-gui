@@ -1,7 +1,7 @@
 """Implementation of 'Select fractal type' dialog."""
 
 #
-#  (C) Copyright 2019, 2020  Pavel Tisnovsky
+#  (C) Copyright 2019, 2020, 2026  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,11 @@ class FractalTypeDialog(tkinter.Toplevel):
         """
         Initialize the fractal type selection dialog as a modal top-level window.
 
-        Creates a labeled frame titled "Fractal type", adds four selectable fractal-type buttons (complex plane, dynamic system, IFS, L-system) each with color and grayscale icons and hover behavior, and a Cancel button. Registers window close handling (window manager close and Escape key) and grabs focus to make the dialog modal.
+        Creates a labeled frame titled "Fractal type", adds four selectable
+        fractal-type buttons (complex plane, dynamic system, IFS, L-system)
+        each with color and grayscale icons and hover behavior, and a Cancel
+        button. Registers window close handling (window manager close and
+        Escape key) and grabs focus to make the dialog modal.
 
         Parameters:
             parent: The parent widget for this dialog (typically a tkinter root or window).
@@ -127,7 +131,8 @@ class FractalTypeDialog(tkinter.Toplevel):
         """
         Show the dialog and block execution until the window is closed.
 
-        This deiconifies the toplevel window and waits for it to be destroyed, returning control after the dialog is closed.
+        This deiconifies the toplevel window and waits for it to be destroyed,
+        returning control after the dialog is closed.
         """
         self.wm_deiconify()
         self.wait_window()
@@ -151,7 +156,8 @@ class FractalTypeDialog(tkinter.Toplevel):
         """
         Open the IFS fractal type selection dialog.
 
-        Creates an IFSFractalTypeDialog with no parent window, triggering the dialog UI for configuring an IFS fractal.
+        Creates an IFSFractalTypeDialog with no parent window, triggering the
+        dialog UI for configuring an IFS fractal.
         """
         IFSFractalTypeDialog(self)
 
@@ -168,6 +174,7 @@ def select_fractal_type_dialog(parent, icons):
     """
     Open the "Select fractal type" dialog.
 
-    Creates a FractalTypeDialog with no parent, opening the modal dialog that lets the user choose a fractal type.
+    Creates a FractalTypeDialog with no parent, opening the modal dialog that
+    lets the user choose a fractal type.
     """
     FractalTypeDialog(parent, icons)
