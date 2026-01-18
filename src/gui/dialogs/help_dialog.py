@@ -1,5 +1,5 @@
 #
-#  (C) Copyright 2019  Pavel Tisnovsky
+#  (C) Copyright 2019, 2026  Pavel Tisnovsky
 #
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
@@ -18,10 +18,15 @@ class HelpDialog(tkinter.Toplevel):
         """
         Create and display a modal "Nápověda" (Help) dialog attached to the given parent window.
 
-        The dialog is transient to the parent, grabs focus, and presents a read-only, scrollable text area pre-populated with section headings ("Help", "Fractal selection", "Renderer", "Compositor"). A labeled frame contains the text and its vertical scrollbar. An OK button and the window close control both close the dialog.
+        The dialog is transient to the parent, grabs focus, and presents a
+        read-only, scrollable text area pre-populated with section headings
+        ("Help", "Fractal selection", "Renderer", "Compositor"). A labeled
+        frame contains the text and its vertical scrollbar. An OK button and
+        the window close control both close the dialog.
 
         Parameters:
-                parent (tkinter.Tk or tkinter.Toplevel): The parent window to which the dialog is transient; may be None.
+                parent (tkinter.Tk or tkinter.Toplevel): The parent window to
+                which the dialog is transient; may be None.
         """
         tkinter.Toplevel.__init__(self, parent)
         self.title("Nápověda")
@@ -74,6 +79,7 @@ def help():
     """
     Open the application's modal help dialog.
 
-    Creates and displays a HelpDialog with no parent, blocking interaction with other windows until the dialog is closed.
+    Creates and displays a HelpDialog with no parent, blocking interaction with
+    other windows until the dialog is closed.
     """
     HelpDialog(None)
