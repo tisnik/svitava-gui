@@ -1,3 +1,17 @@
+"""Dialog to select IFS fractal."""
+
+#
+#  (C) Copyright 2026  Pavel Tisnovsky
+#
+#  All rights reserved. This program and the accompanying materials
+#  are made available under the terms of the Eclipse Public License v1.0
+#  which accompanies this distribution, and is available at
+#  http://www.eclipse.org/legal/epl-v10.html
+#
+#  Contributors:
+#      Pavel Tisnovsky
+#
+
 import tkinter
 
 
@@ -8,7 +22,8 @@ class IFSFractalTypeDialog(tkinter.Toplevel):
         Create the IFSFractalTypeDialog as a tkinter Toplevel window attached to the given parent.
 
         Parameters:
-            parent (tkinter.Widget): The parent/master widget or window to which this dialog will be attached.
+            parent (tkinter.Widget): The parent/master widget or window to
+            which this dialog will be attached.
         """
         tkinter.Toplevel.__init__(self, parent)
         top_part = tkinter.LabelFrame(self, text="IFS", padx=5, pady=5)
@@ -44,7 +59,9 @@ class IFSFractalTypeDialog(tkinter.Toplevel):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
 
-        This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
+        This brings the dialog to the foreground if it was minimized and then
+        waits for the dialog window to be destroyed, preventing code execution
+        from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
         self.wait_window()
