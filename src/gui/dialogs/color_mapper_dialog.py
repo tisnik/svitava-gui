@@ -65,7 +65,7 @@ class ColorMapperDialog(tkinter.Toplevel):
         self.wait_window()
 
 
-def select_color_mapper_dialog(parent: tkinter.Tk) ->None:
+def select_color_mapper_dialog(parent: tkinter.Tk) -> None:
     """
     Open the "Color mapper" dialog.
     """
