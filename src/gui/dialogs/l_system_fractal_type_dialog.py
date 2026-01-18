@@ -1,3 +1,17 @@
+"""Dialog to select L-system."""
+
+#
+#  (C) Copyright 2026  Pavel Tisnovsky
+#
+#  All rights reserved. This program and the accompanying materials
+#  are made available under the terms of the Eclipse Public License v1.0
+#  which accompanies this distribution, and is available at
+#  http://www.eclipse.org/legal/epl-v10.html
+#
+#  Contributors:
+#      Pavel Tisnovsky
+#
+
 import tkinter
 
 
@@ -44,7 +58,9 @@ class LSystemFractalTypeDialog(tkinter.Toplevel):
         """
         Display the dialog (restore if minimized) and block until the window is closed.
 
-        This brings the dialog to the foreground if it was minimized and then waits for the dialog window to be destroyed, preventing code execution from continuing until the user closes the dialog.
+        This brings the dialog to the foreground if it was minimized and then
+        waits for the dialog window to be destroyed, preventing code execution
+        from continuing until the user closes the dialog.
         """
         self.wm_deiconify()
         self.wait_window()
